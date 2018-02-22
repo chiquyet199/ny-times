@@ -1,8 +1,8 @@
-import { FETCH_NEW } from 'actions/news'
+import { FETCH_NEWS_SUCCESS } from 'actions/news'
 
 const initialState = [
   {
-    id: 123,
+    _id: 123,
     snippet: 'This is snippet',
     pub_date: '13 Feb 2018',
     source: 'this is source',
@@ -19,28 +19,10 @@ const initialState = [
       },
     ],
   },
-  {
-    id: 124,
-    snippet: 'This is snippet',
-    pub_date: '14 Feb 2018',
-    source: 'this is source 2',
-    multimedia: [
-      {
-        url: 'string',
-        format: 'string',
-        height: 100,
-        width: 100,
-        type: 'video',
-        subtype: 'string',
-        caption: 'string',
-        copyright: 'string',
-      },
-    ],
-  },
 ]
 let newsActionHandlers = {}
 
-newsActionHandlers[FETCH_NEW] = (state, payload) => {
+newsActionHandlers[FETCH_NEWS_SUCCESS] = (state, payload) => {
   return payload
 }
 

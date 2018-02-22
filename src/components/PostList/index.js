@@ -21,7 +21,7 @@ class PostList extends React.Component {
       <div>
         <button onClick={this.xxx}>123</button>
         {data.map(item => {
-          return <Post clickHandler={this.onClickHandler} key={item.id} {...item} />
+          return <Post clickHandler={this.onClickHandler} key={item._id} {...item} />
         })}
       </div>
     )

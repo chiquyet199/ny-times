@@ -1,5 +1,5 @@
 import Api from 'services/api'
-export const FETCH_NEW = 'FETCH_NEW'
+export const FETCH_NEWS_SUCCESS = 'FETCH_NEWS_SUCCESS'
 
 export { getNewsDetail }
 
@@ -10,8 +10,7 @@ function getNewsDetail() {
     const currentYear = today.getFullYear()
     const url = `archive/v1/${currentYear}/${currentMonth}.json`
     Api.get(url).then(res => {
-      console.log(res.docs)
+      dispatch({ type: FETCH_NEWS_SUCCESS, payload: res.docs })
     })
-    dispatch({ type: FETCH_NEW, payload: [] })
   }
 }

@@ -18,7 +18,6 @@ class Api {
       axios
         .request(options)
         .then(result => {
-          console.log(result)
           resolve(result.data.response)
         })
         .catch(error => {
