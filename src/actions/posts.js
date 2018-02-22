@@ -10,7 +10,7 @@ function getPosts() {
     const currentYear = today.getFullYear()
     const url = `archive/v1/${currentYear}/${currentMonth}.json`
     Api.get(url).then(res => {
-      dispatch({ type: GET_POSTS_SUCCESS, payload: res.docs })
+      dispatch({ type: GET_POSTS_SUCCESS, payload: res.docs.slice(0, 10) })
     })
   }
 }

@@ -3,16 +3,30 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import store from 'configs/store'
 
+import './styles.scss'
+
 class Modal extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isVisible: false,
+    }
+  }
+
   componentDidMount() {
     this.modalTarget = document.createElement('div')
     this.modalTarget.className = 'modal'
-    document.body.appendChild(this.modalTarget)
-    this._render()
+    if (this.state.isVisible) {
+      document.body.appendChild(this.modalTarget)
+      this._render()
+    }
   }
 
-  componentWillUpdate() {
-    this._render()
+  componentWillUpdate(nextProps, nextState) {
+    if (nextProps.isVisible) {
+      document.body.appendChild(this.modalTarget)
+      this._render()
+    }
   }
 
   componentWillUnmount() {
@@ -23,7 +37,9 @@ class Modal extends React.Component {
   _render = () => {
     ReactDOM.render(
       <Provider store={store}>
-        <div>{this.props.children}</div>
+        <div className="modal__overlay">
+          <div>{this.props.children}</div>
+        </div>
       </Provider>,
       this.modalTarget,
     )

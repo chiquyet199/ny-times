@@ -1,11 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Modal from 'components/Modal'
+import PostDetail from 'components/PostDetail'
+import './styles.scss'
+
 const Post = props => {
   const { snippet, clickHandler } = props
   return (
-    <div onClick={clickHandler}>
+    <div className="post__item" onClick={clickHandler}>
       <h1>{snippet}</h1>
+      {/* <Modal isVisible={false}>
+        <PostDetail {...props} />
+      </Modal> */}
     </div>
   )
 }
