@@ -8,6 +8,7 @@ const Home = props => {
 }
 
 const mapStateToProps = ({ news }) => {
+  console.log(news)
   return {
     news,
   }

@@ -7,6 +7,7 @@ import Post from 'components/Post'
 class PostList extends React.Component {
   constructor(props) {
     super(props)
+    this.onClickHandler = this.onClickHandler.bind(this)
   }
 
   onClickHandler() {
@@ -14,11 +15,13 @@ class PostList extends React.Component {
   }
 
   render() {
+    console.log(1)
     const { data } = this.props
     return (
       <div>
+        <button onClick={this.xxx}>123</button>
         {data.map(item => {
-          return <Post onClickHandler={this.onClickHandler} key={item.id} title={item.title} />
+          return <Post clickHandler={this.onClickHandler} key={item.id} {...item} />
         })}
       </div>
     )
@@ -32,9 +35,7 @@ PostList.propTypes = {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getNewsDetail: () => {
-      return dispatch(getNewsDetail)
-    },
+    getNewsDetail: () => dispatch(getNewsDetail()),
   }
 }
 
