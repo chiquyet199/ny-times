@@ -1,4 +1,4 @@
-import { FETCH_NEWS_SUCCESS } from 'actions/news'
+import { GET_POSTS_SUCCESS } from 'actions/posts'
 
 const initialState = [
   {
@@ -22,7 +22,7 @@ const initialState = [
 ]
 let newsActionHandlers = {}
 
-newsActionHandlers[FETCH_NEWS_SUCCESS] = (state, payload) => {
+newsActionHandlers[GET_POSTS_SUCCESS] = (state, payload) => {
   return payload
 }
 

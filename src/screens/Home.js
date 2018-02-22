@@ -3,14 +3,14 @@ import { connect } from 'react-redux'
 import PostList from 'components/PostList'
 
 const Home = props => {
-  const { news } = props
-  return <PostList data={news} />
+  const { posts } = props
+  return <PostList data={posts} />
 }
 
-const mapStateToProps = ({ news }) => {
-  console.log(news)
+const mapStateToProps = ({ posts }) => {
+  console.log(posts)
   return {
-    news,
+    posts,
   }
 }
 

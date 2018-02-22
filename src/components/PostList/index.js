@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { getNewsDetail } from 'actions/news'
+import { getPosts } from 'actions/posts'
 import Post from 'components/Post'
 
 class PostList extends React.Component {
@@ -10,7 +10,7 @@ class PostList extends React.Component {
   }
 
   onClickHandler = () => {
-    this.props.getNewsDetail()
+    this.props.getPosts()
   }
 
   render() {
@@ -29,12 +29,12 @@ class PostList extends React.Component {
 
 PostList.propTypes = {
   data: PropTypes.array,
-  getNewsDetail: PropTypes.func,
+  getPosts: PropTypes.func,
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getNewsDetail: () => dispatch(getNewsDetail()),
+    getPosts: () => dispatch(getPosts()),
   }
 }
 
