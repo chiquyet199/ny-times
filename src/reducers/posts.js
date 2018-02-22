@@ -20,14 +20,23 @@ const initialState = [
   //   ],
   // },
 ]
-let newsActionHandlers = {}
+let actionHandlers = {}
 
-newsActionHandlers[GET_POSTS_SUCCESS] = (state, payload) => {
-  return payload
+actionHandlers[GET_POSTS_SUCCESS] = (state, posts) => {
+  return posts.map(post => {
+    const { _id, snippet, pub_date, source, multimedia } = post
+    return {
+      _id,
+      snippet,
+      pub_date,
+      source,
+      multimedia,
+    }
+  })
 }
 
 export default (state = initialState, action) => {
-  var handler = newsActionHandlers[action.type]
+  var handler = actionHandlers[action.type]
   if (handler) return handler(state, action.payload)
   return state
 }

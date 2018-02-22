@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import store from 'configs/store'
 
@@ -8,8 +9,9 @@ import './styles.scss'
 class Modal extends React.Component {
   constructor(props) {
     super(props)
+    const { isVisible } = this.props
     this.state = {
-      isVisible: false,
+      isVisible,
     }
   }
 
@@ -30,14 +32,20 @@ class Modal extends React.Component {
   }
 
   componentWillUnmount() {
+    this._destroy()
+  }
+
+  _destroy = () => {
     ReactDOM.unmountComponentAtNode(this.modalTarget)
     document.body.removeChild(this.modalTarget)
+    this.props.onAfterClosed()
   }
 
   _render = () => {
     ReactDOM.render(
       <Provider store={store}>
         <div className="modal__overlay">
+          <button onClick={this._destroy}>Close</button>
           <div>{this.props.children}</div>
         </div>
       </Provider>,
@@ -48,6 +56,18 @@ class Modal extends React.Component {
   render() {
     return <noscript />
   }
+}
+
+Modal.propTypes = {
+  isVisible: PropTypes.bool,
+  data: PropTypes.array,
+  onAfterClosed: PropTypes.func,
+}
+
+Modal.defaultProps = {
+  isVisible: false,
+  data: [],
+  onAfterClosed: () => {},
 }
 
 export default Modal

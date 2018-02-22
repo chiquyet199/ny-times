@@ -1,55 +1,71 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
-import { getPosts } from 'actions/posts'
+import { setActivePost, clearActivePost } from 'actions/active-post'
 import Post from 'components/Post'
 import Modal from 'components/Modal'
+import Paging from 'components/Paging'
 import PostDetail from 'components/PostDetail'
 
 class PostList extends React.Component {
   constructor(props) {
     super(props)
+    const { activePost } = this.props
     this.state = {
-      isVisible: false,
+      isVisible: !!activePost,
+      activePost,
     }
   }
 
-  componentDidMount() {
-    this.props.getPosts()
+  componentWillReceiveProps(nextProps) {
+    this.setState({ activePost: nextProps.activePost }, () => {
+      if (!!nextProps.activePost) {
+        this.showPostDetailModal()
+      }
+    })
   }
 
-  onPostItemClickHandler = () => {
+  showPostDetailModal = () => {
     this.setState({ isVisible: true })
   }
 
+  renderItem = item => {
+    return <Post clickHandler={this.props.setActivePost} key={item._id} {...item} />
+  }
+
   render() {
-    const { data } = this.props
-    const { isVisible } = this.state
+    const { isVisible, activePost } = this.state
+    const { posts, clearActivePost } = this.props
     return (
       <div>
-        <Modal isVisible={isVisible}>
-          <PostDetail {...data[0]} />
+        <Modal isVisible={isVisible} onAfterClosed={clearActivePost}>
+          <PostDetail {...activePost} />
         </Modal>
-        <div>
-          {data.map(item => {
-            return <Post clickHandler={this.onPostItemClickHandler} key={item._id} {...item} />
-          })}
-        </div>
+        <Paging data={posts} renderItem={this.renderItem} />
       </div>
     )
   }
 }
 
 PostList.propTypes = {
-  data: PropTypes.array,
-  getPosts: PropTypes.func,
+  posts: PropTypes.array,
+  setActivePost: PropTypes.func,
+}
+
+const mapStateToProps = ({ activePost }) => {
+  return { activePost }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getPosts: () => dispatch(getPosts()),
+    setActivePost: id => {
+      dispatch(setActivePost(id))
+    },
+    clearActivePost: () => {
+      dispatch(clearActivePost)
+    },
   }
 }
 
-export default connect(null, mapDispatchToProps)(PostList)
+export default connect(mapStateToProps, mapDispatchToProps)(PostList)
