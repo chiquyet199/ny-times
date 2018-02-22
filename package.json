@@ -23,6 +23,7 @@
     "babel-jest": "^22.2.2",
     "babel-loader": "^7.1.2",
     "babel-plugin-module-resolver": "^3.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
@@ -60,7 +61,10 @@
   },
   "jest": {
     "collectCoverage": true,
-    "collectCoverageFrom": ["src/**", "!src/index.js"],
+    "collectCoverageFrom": [
+      "src/**",
+      "!src/index.js"
+    ],
     "coverageThreshold": {
       "global": {
         "branches": 90,
@@ -69,11 +73,16 @@
         "statements": 90
       }
     },
-    "moduleDirectories": ["node_modules", "./"],
+    "moduleDirectories": [
+      "node_modules",
+      "./"
+    ],
     "moduleNameMapper": {
       "^.+.(css|scss|sass)$": "<rootDir>/__tests__/cssStub.js"
     },
-    "setupFiles": ["raf/polyfill"],
+    "setupFiles": [
+      "raf/polyfill"
+    ],
     "transform": {
       "^.+\\.js?$": "babel-jest"
     }

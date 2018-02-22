@@ -7,10 +7,9 @@ import Post from 'components/Post'
 class PostList extends React.Component {
   constructor(props) {
     super(props)
-    this.onClickHandler = this.onClickHandler.bind(this)
   }
 
-  onClickHandler() {
+  onClickHandler = () => {
     this.props.getNewsDetail()
   }
 
