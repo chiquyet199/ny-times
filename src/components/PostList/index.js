@@ -14,7 +14,6 @@ class PostList extends React.Component {
   }
 
   render() {
-    console.log(1)
     const { data } = this.props
     return (
       <div>
