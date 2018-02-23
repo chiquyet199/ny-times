@@ -57,7 +57,6 @@ class Paging extends React.Component {
   }
 
   render() {
-    console.log('render')
     const { data, pages, pageSize, pageIndex } = this.state
     const { renderItem } = this.props
     return (
