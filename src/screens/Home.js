@@ -9,10 +9,6 @@ class Home extends React.Component {
     this.props.getPosts()
   }
 
-  componentWillReceiveProps(props) {
-    this.setState({ posts: props.posts })
-  }
-
   render() {
     const { posts } = this.props
     return <div>{posts.length > 0 ? <PostList posts={posts} /> : <Loading />}</div>
