@@ -17,11 +17,11 @@ class Modal extends React.Component {
 
   listenKeyboard = event => {
     if (event.key === 'Escape' || event.keyCode === 27) {
-      this._destroy()
+      this.close()
     }
   }
 
-  _destroy = () => {
+  close = () => {
     window.removeEventListener('keydown', this.listenKeyboard, true)
     if (this.modalTarget) ReactDOM.unmountComponentAtNode(this.modalTarget)
     if (document.body.contains(this.modalTarget)) document.body.removeChild(this.modalTarget)
@@ -32,7 +32,7 @@ class Modal extends React.Component {
     ReactDOM.render(
       <Provider store={store}>
         <div>
-          <div className="modal-overlay" onClick={this._destroy} />
+          <div className="modal-overlay" onClick={this.close} />
           <div className="modal-content">
             <div>{this.props.children}</div>
           </div>

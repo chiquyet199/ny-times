@@ -7,9 +7,9 @@
   .item {
     display: inline-block;
     padding: 10px;
-    border: 1px solid gray;
+    border: 1px solid $gray;
     &.disabled {
-      color: $gray;
+      color: $light-gray;
     }
     &.active {
       background: $yellow-green;
