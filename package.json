@@ -44,7 +44,6 @@
     "webpack": "^3.6.0"
   },
   "devDependencies": {
-    "redux-logger": "^3.0.6",
     "babel-eslint": "^8.0.1",
     "enzyme": "^3.0.0",
     "eslint": "^4.7.2",
@@ -55,13 +54,17 @@
     "jest": "^21.2.0",
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.0.0",
+    "redux-logger": "^3.0.6",
     "webpack-dev-middleware": "^1.12.0",
     "webpack-dev-server": "^2.8.2",
     "webpack-hot-middleware": "^2.19.1"
   },
   "jest": {
     "collectCoverage": true,
-    "collectCoverageFrom": ["src/**", "!src/index.js"],
+    "collectCoverageFrom": [
+      "src/**",
+      "!src/index.js"
+    ],
     "coverageThreshold": {
       "global": {
         "branches": 90,
@@ -70,11 +73,16 @@
         "statements": 90
       }
     },
-    "moduleDirectories": ["node_modules", "./"],
+    "moduleDirectories": [
+      "node_modules",
+      "./"
+    ],
     "moduleNameMapper": {
       "^.+.(css|scss|sass)$": "<rootDir>/__tests__/cssStub.js"
     },
-    "setupFiles": ["raf/polyfill"],
+    "setupFiles": [
+      "raf/polyfill"
+    ],
     "transform": {
       "^.+\\.js?$": "babel-jest"
     }
