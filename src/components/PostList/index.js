@@ -18,7 +18,6 @@ class PostList extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('postlist componentWIllReceiveProps', nextProps)
     this.setState({ activePost: nextProps.activePost })
   }
 
