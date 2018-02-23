@@ -7,7 +7,7 @@ const Post = props => {
   const { _id, snippet, clickHandler } = props
   return (
     <div
-      className="post__item"
+      className="post-item"
       onClick={() => {
         clickHandler(_id)
       }}

@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import PostList from 'components/PostList'
 import { getPosts } from 'actions/posts'
+import Loading from 'components/Loading'
+import PostList from 'components/PostList'
 
 class Home extends React.Component {
   componentDidMount() {
@@ -14,7 +15,7 @@ class Home extends React.Component {
 
   render() {
     const { posts } = this.props
-    return <div>{posts.length > 0 ? <PostList posts={posts} /> : <div>Loading....</div>}</div>
+    return <div>{posts.length > 0 ? <PostList posts={posts} /> : <Loading />}</div>
   }
 }
 

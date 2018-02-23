@@ -18,3 +18,12 @@
     background: $dark-white;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .modal .modal-content {
+    top: 30%;
+    right: 10px;
+    bottom: 30%;
+    left: 10px;
+  }
+}
