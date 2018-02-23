@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "build": "webpack --config webpack.prod.config.js",
-    "dev": "webpack-dev-server --hot --inline",
+    "dev": "webpack-dev-server --hot --inline && NODE_ENV=development",
     "lint": "eslint src/**",
     "lint:watch": "esw -w src/**",
     "review": "npm run lint && npm test",
@@ -61,10 +61,7 @@
   },
   "jest": {
     "collectCoverage": true,
-    "collectCoverageFrom": [
-      "src/**",
-      "!src/index.js"
-    ],
+    "collectCoverageFrom": ["src/**", "!src/index.js"],
     "coverageThreshold": {
       "global": {
         "branches": 90,
@@ -73,16 +70,11 @@
         "statements": 90
       }
     },
-    "moduleDirectories": [
-      "node_modules",
-      "./"
-    ],
+    "moduleDirectories": ["node_modules", "./"],
     "moduleNameMapper": {
       "^.+.(css|scss|sass)$": "<rootDir>/__tests__/cssStub.js"
     },
-    "setupFiles": [
-      "raf/polyfill"
-    ],
+    "setupFiles": ["raf/polyfill"],
     "transform": {
       "^.+\\.js?$": "babel-jest"
     }
