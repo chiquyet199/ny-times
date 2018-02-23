@@ -11,7 +11,7 @@
   }
   .modal-content {
     top: 50%;
-    position: absolute;
+    position: fixed;
     transform: translateY(-50%) translateX(-50%);
     padding: 20px;
     background: $dark-white;
@@ -19,7 +19,7 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $breakpoint-mobile) {
   .modal .modal-content {
     top: 25%;
     right: 10px;
