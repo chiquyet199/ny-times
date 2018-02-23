@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { API_KEY } from 'configs/api-key'
+import { API_KEY } from 'configs/common'
 
 class Api {
   constructor() {

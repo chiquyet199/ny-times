@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './styles'
+import './styles.scss'
 
 const beforeSteps = [-500, -150, -50, -10, -2, -1]
 const afterSteps = [1, 2, 10, 50, 150, 500]
@@ -14,10 +14,10 @@ const Paginator = props => {
   const moveNextClassName = canMoveNext ? 'item' : 'item disabled'
   return (
     <div className="paginator">
-      <div onClick={firstPage} className={moveBackClassName}>
+      <div id="first-btn" onClick={firstPage} className={moveBackClassName}>
         First
       </div>
-      <div onClick={previousPage} className={moveBackClassName}>
+      <div id="prev-btn" onClick={previousPage} className={moveBackClassName}>
         {'<'}
       </div>
 
@@ -53,10 +53,10 @@ const Paginator = props => {
         ) : null
       })}
 
-      <div onClick={nextPage} className={moveNextClassName}>
+      <div id="next-btn" onClick={nextPage} className={moveNextClassName}>
         {'>'}
       </div>
-      <div onClick={lastPage} className={moveNextClassName}>
+      <div id="last-btn" onClick={lastPage} className={moveNextClassName}>
         Last
       </div>
     </div>

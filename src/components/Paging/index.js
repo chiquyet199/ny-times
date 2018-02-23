@@ -6,6 +6,11 @@ import Paginator from './Paginator'
 class Paging extends React.Component {
   constructor(props) {
     super(props)
+    this.goToPage = this.goToPage.bind(this)
+    this.lastPage = this.lastPage.bind(this)
+    this.nextPage = this.nextPage.bind(this)
+    this.firstPage = this.firstPage.bind(this)
+    this.previousPage = this.previousPage.bind(this)
     const { data, pageSize, pageIndex } = this.props
     this.state = {
       data: data.slice(pageIndex, pageSize),
@@ -26,7 +31,7 @@ class Paging extends React.Component {
     })
   }
 
-  goToPage = page => {
+  goToPage(page) {
     const { data, pageSize } = this.props
     const pageIndex = page - 1
     const beginIndex = pageIndex * pageSize
@@ -36,23 +41,23 @@ class Paging extends React.Component {
     }))
   }
 
-  nextPage = () => {
+  nextPage() {
     const { pageIndex, pages } = this.state
     const currentPage = pageIndex + 1
     if (currentPage < pages) this.goToPage(currentPage + 1)
   }
 
-  previousPage = () => {
+  previousPage() {
     const { pageIndex } = this.state
     const currentPage = pageIndex + 1
     if (currentPage > 1) this.goToPage(currentPage - 1)
   }
 
-  firstPage = () => {
+  firstPage() {
     this.goToPage(1)
   }
 
-  lastPage = () => {
+  lastPage() {
     this.goToPage(this.state.pages)
   }
 
