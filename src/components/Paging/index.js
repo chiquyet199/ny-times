@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
+import { setPageIndex } from 'actions/paging'
 import Paginator from './Paginator'
 
-class Paging extends React.Component {
+export class Paging extends React.Component {
   constructor(props) {
     super(props)
     this.goToPage = this.goToPage.bind(this)
@@ -20,21 +22,11 @@ class Paging extends React.Component {
     }
   }
 
-  componentWillReceiveProps(props) {
-    const { data, pageSize, pageIndex } = props
-
-    this.setState({
-      data: data.slice(pageIndex, pageSize),
-      pages: Math.ceil(data.length / pageSize),
-      pageSize,
-      pageIndex,
-    })
-  }
-
   goToPage(page) {
     const { data, pageSize } = this.props
     const pageIndex = page - 1
     const beginIndex = pageIndex * pageSize
+    this.props.setPageIndex(pageIndex)
     this.setState(prevState => ({
       data: data.slice(beginIndex, beginIndex + pageSize),
       pageIndex,
@@ -54,11 +46,15 @@ class Paging extends React.Component {
   }
 
   firstPage() {
-    this.goToPage(1)
+    const { pageIndex } = this.state
+    const currentPage = pageIndex + 1
+    if (currentPage > 1) this.goToPage(1)
   }
 
   lastPage() {
-    this.goToPage(this.state.pages)
+    const { pageIndex, pages } = this.state
+    const currentPage = pageIndex + 1
+    if (currentPage < pages) this.goToPage(this.state.pages)
   }
 
   render() {
@@ -93,8 +89,20 @@ Paging.propTypes = {
 Paging.defaultProps = {
   data: [],
   pageSize: 10,
-  pageIndex: 0,
   renderItem: () => {},
+  setPageIndex: () => {},
 }
 
-export default Paging
+const mapStateToProps = ({ paging }) => {
+  return { pageIndex: paging.pageIndex }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setPageIndex: idx => {
+      dispatch(setPageIndex(idx))
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Paging)

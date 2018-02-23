@@ -7,5 +7,5 @@ import Loading from '../index'
 
 test('it should render the Loading component correct', () => {
   const wrapper = shallow(<Loading />)
-  expect(wrapper.contains(<div class="loading" />)).toEqual(true)
+  expect(wrapper.contains(<div className="loading" />)).toEqual(true)
 })

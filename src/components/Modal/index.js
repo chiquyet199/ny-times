@@ -7,28 +7,35 @@ import store from 'configs/store'
 import './styles.scss'
 
 class Modal extends React.Component {
+  constructor(props) {
+    super(props)
+    this.open = this.open.bind(this)
+    this.close = this.close.bind(this)
+    this.listenKeyboard = this.listenKeyboard.bind(this)
+  }
+
   componentDidMount() {
     this.modalTarget = document.createElement('div')
     this.modalTarget.className = 'modal'
     document.body.appendChild(this.modalTarget)
     window.addEventListener('keydown', this.listenKeyboard, true)
-    this._render()
+    this.open()
   }
 
-  listenKeyboard = event => {
+  listenKeyboard(event) {
     if (event.key === 'Escape' || event.keyCode === 27) {
       this.close()
     }
   }
 
-  close = () => {
+  close() {
     window.removeEventListener('keydown', this.listenKeyboard, true)
     if (this.modalTarget) ReactDOM.unmountComponentAtNode(this.modalTarget)
     if (document.body.contains(this.modalTarget)) document.body.removeChild(this.modalTarget)
     this.props.onAfterClosed()
   }
 
-  _render = () => {
+  open() {
     ReactDOM.render(
       <Provider store={store}>
         <div>

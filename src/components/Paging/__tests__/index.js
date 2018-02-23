@@ -1,19 +1,15 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
+import configureStore from 'redux-mock-store'
 
 import '__tests__/config'
 
-import Paging from '../index'
+import { Paging } from '../index'
 import Paginator from '../Paginator'
 
 const props = {
   pages: 10,
   currentPage: 1,
-  onPageClick: () => {},
-  firstPage: () => {},
-  lastPage: () => {},
-  nextPage: () => {},
-  previousPage: () => {},
 }
 
 test('Paginator should render first button and prev button with class disabled when at the first page', () => {
@@ -28,14 +24,19 @@ test('Paginator should render last button and next button with class disabled wh
   expect(wrapper.find('#next-btn').hasClass('disabled')).toEqual(true)
 })
 
-test('Paging should render children when passin', () => {
+test('Paging should render children when passed in', () => {
   const wrapper = shallow(
     <Paging
       data={[{ _id: 123, snippet: 'string' }]}
-      renderItem={item => <div key={item._id}>{item.snippet}</div>}
+      renderItem={item => (
+        <div className={`x${item._id}`} key={item._id}>
+          {item.snippet}
+        </div>
+      )}
     />,
   )
-  expect(wrapper.contains(<div>string</div>)).toEqual(true)
+  console.log(wrapper)
+  expect(wrapper.find('.x123').length).toEqual(1)
 })
 
 test('Paging should render Paginator', () => {

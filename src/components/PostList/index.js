@@ -8,26 +8,18 @@ import Modal from 'components/Modal'
 import Paging from 'components/Paging'
 import PostDetail from 'components/PostDetail'
 
-class PostList extends React.Component {
+export class PostList extends React.Component {
   constructor(props) {
     super(props)
-    const { activePost } = this.props
-    this.state = {
-      activePost,
-    }
+    this.renderItem = this.renderItem.bind(this)
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ activePost: nextProps.activePost })
-  }
-
-  renderItem = item => {
+  renderItem(item) {
     return <Post clickHandler={this.props.setActivePost} key={item._id} {...item} />
   }
 
   render() {
-    const { activePost } = this.state
-    const { posts, clearActivePost } = this.props
+    const { posts, activePost, clearActivePost } = this.props
     return (
       <div>
         {!!activePost && (
@@ -42,8 +34,15 @@ class PostList extends React.Component {
 }
 
 PostList.propTypes = {
+  activePost: PropTypes.any,
   posts: PropTypes.array,
   setActivePost: PropTypes.func,
+}
+
+PostList.defaultProps = {
+  activePost: null,
+  posts: [],
+  setActivePost: () => {},
 }
 
 const mapStateToProps = ({ activePost }) => {

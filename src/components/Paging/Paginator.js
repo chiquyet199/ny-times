@@ -73,4 +73,14 @@ Paginator.propTypes = {
   previousPage: PropTypes.func,
 }
 
+Paginator.defaultProps = {
+  pages: 1,
+  currentPage: 1,
+  onPageClick: () => {},
+  firstPage: () => {},
+  lastPage: () => {},
+  nextPage: () => {},
+  previousPage: () => {},
+}
+
 export default Paginator
