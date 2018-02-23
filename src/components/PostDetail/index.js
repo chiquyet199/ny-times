@@ -2,10 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Image from 'components/Image'
 
+import './styles.scss'
+
 const PostDetail = props => {
   const { snippet, pub_date, source, multimedia } = props
   return (
-    <div>
+    <div className="post-detail">
       <h2>{snippet}</h2>
       <p>{source}</p>
       <i>{pub_date}</i>
