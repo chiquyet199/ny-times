@@ -12,6 +12,6 @@ function setActivePost(id) {
 
 function clearActivePost() {
   return {
-    type: SET_ACTIVE_POST,
+    type: CLEAR_ACTIVE_POST,
   }
 }

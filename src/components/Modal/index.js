@@ -7,46 +7,35 @@ import store from 'configs/store'
 import './styles.scss'
 
 class Modal extends React.Component {
-  constructor(props) {
-    super(props)
-    const { isVisible } = this.props
-    this.state = {
-      isVisible,
-    }
-  }
-
   componentDidMount() {
     this.modalTarget = document.createElement('div')
     this.modalTarget.className = 'modal'
-    if (this.state.isVisible) {
-      document.body.appendChild(this.modalTarget)
-      this._render()
-    }
+    document.body.appendChild(this.modalTarget)
+    window.addEventListener('keydown', this.listenKeyboard, true)
+    this._render()
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    if (nextProps.isVisible) {
-      document.body.appendChild(this.modalTarget)
-      this._render()
+  listenKeyboard = event => {
+    if (event.key === 'Escape' || event.keyCode === 27) {
+      this._destroy()
     }
-  }
-
-  componentWillUnmount() {
-    this._destroy()
   }
 
   _destroy = () => {
-    ReactDOM.unmountComponentAtNode(this.modalTarget)
-    document.body.removeChild(this.modalTarget)
+    window.removeEventListener('keydown', this.listenKeyboard, true)
+    if (this.modalTarget) ReactDOM.unmountComponentAtNode(this.modalTarget)
+    if (document.body.contains(this.modalTarget)) document.body.removeChild(this.modalTarget)
     this.props.onAfterClosed()
   }
 
   _render = () => {
     ReactDOM.render(
       <Provider store={store}>
-        <div className="modal__overlay">
-          <button onClick={this._destroy}>Close</button>
-          <div>{this.props.children}</div>
+        <div>
+          <div className="modal-overlay" onClick={this._destroy} />
+          <div className="modal-content">
+            <div>{this.props.children}</div>
+          </div>
         </div>
       </Provider>,
       this.modalTarget,
@@ -59,14 +48,10 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = {
-  isVisible: PropTypes.bool,
-  data: PropTypes.array,
   onAfterClosed: PropTypes.func,
 }
 
 Modal.defaultProps = {
-  isVisible: false,
-  data: [],
   onAfterClosed: () => {},
 }
 

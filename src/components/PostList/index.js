@@ -13,21 +13,13 @@ class PostList extends React.Component {
     super(props)
     const { activePost } = this.props
     this.state = {
-      isVisible: !!activePost,
       activePost,
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ activePost: nextProps.activePost }, () => {
-      if (!!nextProps.activePost) {
-        this.showPostDetailModal()
-      }
-    })
-  }
-
-  showPostDetailModal = () => {
-    this.setState({ isVisible: true })
+    console.log('postlist componentWIllReceiveProps', nextProps)
+    this.setState({ activePost: nextProps.activePost })
   }
 
   renderItem = item => {
@@ -35,13 +27,15 @@ class PostList extends React.Component {
   }
 
   render() {
-    const { isVisible, activePost } = this.state
+    const { activePost } = this.state
     const { posts, clearActivePost } = this.props
     return (
       <div>
-        <Modal isVisible={isVisible} onAfterClosed={clearActivePost}>
-          <PostDetail {...activePost} />
-        </Modal>
+        {!!activePost && (
+          <Modal onAfterClosed={clearActivePost}>
+            <PostDetail {...activePost} />
+          </Modal>
+        )}
         <Paging data={posts} renderItem={this.renderItem} />
       </div>
     )
@@ -63,7 +57,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(setActivePost(id))
     },
     clearActivePost: () => {
-      dispatch(clearActivePost)
+      dispatch(clearActivePost())
     },
   }
 }
