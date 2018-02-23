@@ -9,6 +9,7 @@ class Paging extends React.Component {
     const { data, pageSize, pageIndex } = this.props
     this.state = {
       data: data.slice(pageIndex, pageSize),
+      pages: Math.ceil(data.length / pageSize),
       pageSize,
       pageIndex,
     }
@@ -56,6 +57,7 @@ class Paging extends React.Component {
   }
 
   render() {
+    console.log('render')
     const { data, pages, pageSize, pageIndex } = this.state
     const { renderItem } = this.props
     return (

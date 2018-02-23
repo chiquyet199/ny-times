@@ -14,7 +14,7 @@ class Home extends React.Component {
 
   render() {
     const { posts } = this.props
-    return <PostList posts={posts} />
+    return <div>{posts.length > 0 ? <PostList posts={posts} /> : <div>Loading....</div>}</div>
   }
 }
 

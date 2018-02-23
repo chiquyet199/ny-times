@@ -10,18 +10,16 @@ const Paginator = props => {
   let { pages, currentPage, onPageClick, firstPage, lastPage, nextPage, previousPage } = props
   const canMoveBack = currentPage > 1
   const canMoveNext = currentPage < pages
+  const moveBackClassName = canMoveBack ? 'item' : 'item disabled'
+  const moveNextClassName = canMoveNext ? 'item' : 'item disabled'
   return (
     <div className="paginator">
-      {canMoveBack && (
-        <div onClick={firstPage} className="item">
-          First
-        </div>
-      )}
-      {canMoveBack && (
-        <div onClick={previousPage} className="item">
-          {'<'}
-        </div>
-      )}
+      <div onClick={firstPage} className={moveBackClassName}>
+        First
+      </div>
+      <div onClick={previousPage} className={moveBackClassName}>
+        {'<'}
+      </div>
 
       {beforeSteps.map(step => {
         const page = currentPage + step
@@ -55,16 +53,12 @@ const Paginator = props => {
         ) : null
       })}
 
-      {canMoveNext && (
-        <div onClick={nextPage} className="item">
-          {'>'}
-        </div>
-      )}
-      {canMoveNext && (
-        <div onClick={lastPage} className="item">
-          Last
-        </div>
-      )}
+      <div onClick={nextPage} className={moveNextClassName}>
+        {'>'}
+      </div>
+      <div onClick={lastPage} className={moveNextClassName}>
+        Last
+      </div>
     </div>
   )
 }
