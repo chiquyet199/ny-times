@@ -20,9 +20,10 @@ const Post = props => {
 Post.propTypes = {
   clickHandler: PropTypes.func,
   snippet: PropTypes.string,
-  multimedia: PropTypes.array,
-  pub_date: PropTypes.string,
-  source: PropTypes.string,
+}
+
+Post.defaultProps = {
+  clickHandler: () => {},
 }
 
 export default Post

@@ -11,6 +11,8 @@ const props = {
 }
 const wrapper = shallow(<Post {...props} />)
 
-test('it should render the Post component with h1 tag', () => {
-  expect(wrapper.find('h1').text()).toEqual(props.snippet)
+describe('>>>C O M P O N E N T --- Test Post', () => {
+  it('+++ it should render the Post component with h1 tag', () => {
+    expect(wrapper.find('h1').text()).toEqual(props.snippet)
+  })
 })

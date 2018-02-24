@@ -5,7 +5,9 @@ import '__tests__/config'
 
 import Image from '../index'
 
-test('it should render the Image component', () => {
-  const wrapper = shallow(<Image path="images/abc.jpg" />)
-  expect(wrapper.find('img').length).toEqual(1)
+describe('>>>C O M P O N E N T --- Test PostDetail', () => {
+  it('+++ it should render the Image component', () => {
+    const wrapper = shallow(<Image path="images/abc.jpg" />)
+    expect(wrapper.find('img').length).toEqual(1)
+  })
 })

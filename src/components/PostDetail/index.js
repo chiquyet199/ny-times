@@ -11,14 +11,14 @@ const PostDetail = props => {
       <h2>{snippet}</h2>
       <p>{source}</p>
       <i>{pub_date}</i>
-      {multimedia[2] && multimedia[2].legacy && <Image path={multimedia[2].legacy.thumbnail} />}
+      {multimedia && <Image path={multimedia.url} />}
     </div>
   )
 }
 
 PostDetail.propTypes = {
   snippet: PropTypes.string,
-  multimedia: PropTypes.array,
+  multimedia: PropTypes.object,
   pub_date: PropTypes.string,
   source: PropTypes.string,
 }

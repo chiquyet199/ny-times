@@ -26,7 +26,7 @@ actionHandlers[GET_POSTS_SUCCESS] = (state, posts) => {
         snippet,
         pub_date,
         source,
-        multimedia,
+        multimedia: multimedia[0],
       }
     }),
   }

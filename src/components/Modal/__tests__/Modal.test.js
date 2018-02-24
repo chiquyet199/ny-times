@@ -20,7 +20,8 @@ const wrapper = mount(
     <div>123</div>
   </Modal>,
 )
-
-test('it should render the Modal component with modal noscript', () => {
-  expect(wrapper.find('noscript').length).toEqual(1)
+describe('>>>C O M P O N E N T --- Test Modal', () => {
+  it('+++ it should render the Modal component with modal noscript', () => {
+    expect(wrapper.find('noscript').length).toEqual(1)
+  })
 })

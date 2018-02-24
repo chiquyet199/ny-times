@@ -6,22 +6,30 @@ import '__tests__/config'
 import { PostList } from '../index'
 
 const props = {
-  activePost: {},
+  activePost: {
+    snippet: 'snippet',
+    source: 'source',
+    pub_date: 'pub_date',
+    multimedia: {},
+  },
   posts: [
     {
       snippet: 'snippet',
       source: 'source',
       pub_date: 'pub_date',
+      multimedia: {},
     },
   ],
 }
 const wrapper = shallow(<PostList {...props} />)
 
-test('it should render the PostList component with Modal if there is activePost', () => {
-  expect(wrapper.find('Modal').length).toEqual(1)
-})
+describe('>>>C O M P O N E N T --- Test PostList', () => {
+  it('+++ it should render the PostList component with Modal if there is activePost', () => {
+    expect(wrapper.find('Modal').length).toEqual(1)
+  })
 
-test('it should render the PostList component without Modal if there is no activePost', () => {
-  const wrapper = shallow(<PostList {...props} activePost={null} />)
-  expect(wrapper.find('Modal').length).toEqual(0)
+  it('+++ it should render the PostList component without Modal if there is no activePost', () => {
+    const wrapper = shallow(<PostList {...props} activePost={null} />)
+    expect(wrapper.find('Modal').length).toEqual(0)
+  })
 })
