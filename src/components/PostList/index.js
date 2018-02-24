@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { setActivePost, clearActivePost } from 'actions/active-post'
+import { setActivePost, clearActivePost } from 'actions/posts'
 import Post from 'components/Post'
 import Modal from 'components/Modal'
 import Paging from 'components/Paging'
@@ -45,8 +45,8 @@ PostList.defaultProps = {
   setActivePost: () => {},
 }
 
-const mapStateToProps = ({ activePost }) => {
-  return { activePost }
+const mapStateToProps = ({ posts }) => {
+  return { activePost: posts.activePost }
 }
 
 const mapDispatchToProps = dispatch => {

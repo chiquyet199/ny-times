@@ -1,38 +1,35 @@
-import { GET_POSTS_SUCCESS } from 'actions/posts'
+import { GET_POSTS_SUCCESS, SET_ACTIVE_POST, CLEAR_ACTIVE_POST } from 'actions/posts'
 
-const initialState = [
-  // {
-  //   _id: 123,
-  //   snippet: 'This is snippet',
-  //   pub_date: '13 Feb 2018',
-  //   source: 'this is source',
-  //   multimedia: [
-  //     {
-  //       url: 'string',
-  //       format: 'string',
-  //       height: 100,
-  //       width: 100,
-  //       type: 'video',
-  //       subtype: 'string',
-  //       caption: 'string',
-  //       copyright: 'string',
-  //     },
-  //   ],
-  // },
-]
+const initialState = {
+  activePost: null,
+  data: [],
+}
+
 let actionHandlers = {}
 
+actionHandlers[SET_ACTIVE_POST] = (state, payload) => {
+  const activePosts = state.data.filter(post => post._id === payload)
+  return { ...state, activePost: activePosts[0] || null }
+}
+
+actionHandlers[CLEAR_ACTIVE_POST] = (state, payload) => {
+  return { ...state, activePost: null }
+}
+
 actionHandlers[GET_POSTS_SUCCESS] = (state, posts) => {
-  return posts.map(post => {
-    const { _id, snippet, pub_date, source, multimedia } = post
-    return {
-      _id,
-      snippet,
-      pub_date,
-      source,
-      multimedia,
-    }
-  })
+  return {
+    ...state,
+    data: posts.map(post => {
+      const { _id, snippet, pub_date, source, multimedia } = post
+      return {
+        _id,
+        snippet,
+        pub_date,
+        source,
+        multimedia,
+      }
+    }),
+  }
 }
 
 export default (state = initialState, action) => {

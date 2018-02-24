@@ -35,7 +35,6 @@ test('Paging should render children when passed in', () => {
       )}
     />,
   )
-  console.log(wrapper)
   expect(wrapper.find('.x123').length).toEqual(1)
 })
 
