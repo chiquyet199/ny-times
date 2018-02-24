@@ -12,7 +12,7 @@ actionHandlers[SET_ACTIVE_POST] = (state, payload) => {
   return { ...state, activePost: activePosts[0] || null }
 }
 
-actionHandlers[CLEAR_ACTIVE_POST] = (state, payload) => {
+actionHandlers[CLEAR_ACTIVE_POST] = state => {
   return { ...state, activePost: null }
 }
 

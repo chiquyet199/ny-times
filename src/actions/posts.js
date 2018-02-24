@@ -7,7 +7,7 @@ export const CLEAR_ACTIVE_POST = 'CLEAR_ACTIVE_POST'
 export { setActivePost, clearActivePost, getPosts }
 
 function getPosts() {
-  return (dispatch, getState) => {
+  return dispatch => {
     const today = new Date()
     const currentMonth = today.getMonth() + 1
     const currentYear = today.getFullYear()
@@ -16,7 +16,7 @@ function getPosts() {
       .then(res => {
         dispatch({ type: GET_POSTS_SUCCESS, payload: res.docs })
       })
-      .catch(err => {})
+      .catch(() => {})
   }
 }
 

@@ -27,7 +27,7 @@ export class Paging extends React.Component {
     const pageIndex = page - 1
     const beginIndex = pageIndex * pageSize
     this.props.setPageIndex(pageIndex)
-    this.setState(prevState => ({
+    this.setState(() => ({
       data: data.slice(beginIndex, beginIndex + pageSize),
       pageIndex,
     }))
@@ -58,7 +58,7 @@ export class Paging extends React.Component {
   }
 
   render() {
-    const { data, pages, pageSize, pageIndex } = this.state
+    const { data, pages, pageIndex } = this.state
     const { renderItem } = this.props
     return (
       <div>
