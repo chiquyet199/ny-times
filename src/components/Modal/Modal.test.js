@@ -3,7 +3,7 @@ import { mount } from 'enzyme'
 
 import 'configs/tests'
 
-import Modal from '../index'
+import Modal from './Modal'
 
 const props = {
   activePost: {},

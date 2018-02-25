@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 
 import 'configs/tests'
 
-import Image from '../index'
+import Image from './Image'
 
 describe('>>>C O M P O N E N T --- Test PostDetail', () => {
   it('+++ it should render the Image component', () => {

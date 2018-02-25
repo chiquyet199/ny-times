@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './styles.scss'
+import './Post.scss'
 
 const Post = props => {
   const { _id, snippet, clickHandler } = props

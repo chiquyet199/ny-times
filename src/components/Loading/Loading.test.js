@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 
 import 'configs/tests'
 
-import Loading from '../index'
+import Loading from './Loading'
 
 describe('>>>C O M P O N E N T --- Test PostDetail', () => {
   it('+++ it should render the Loading component correct', () => {

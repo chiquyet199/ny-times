@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { setPageIndex } from 'actions/paging'
-import Paginator from './Paginator'
+import Paginator from './Paginator/Paginator'
 
 export class Paging extends React.Component {
   constructor(props) {

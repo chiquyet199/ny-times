@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Image from 'components/Image'
+import { Image } from 'components'
 
-import './styles.scss'
+import './PostDetail.scss'
 
 const PostDetail = props => {
   const { snippet, pub_date, source, multimedia } = props

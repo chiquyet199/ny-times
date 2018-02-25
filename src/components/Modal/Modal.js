@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import store from 'configs/store'
 
-import './styles.scss'
+import './Modal.scss'
 
 class Modal extends React.Component {
   constructor(props) {

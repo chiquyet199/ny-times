@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 
 import 'configs/tests'
 
-import { PostList } from '../index'
+import { PostList } from './PostList'
 
 const props = {
   activePost: {

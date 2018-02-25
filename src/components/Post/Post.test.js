@@ -3,7 +3,8 @@ import { shallow } from 'enzyme'
 
 import 'configs/tests'
 
-import Post from '../index'
+import Post from './Post'
+
 const props = {
   snippet: 'snippet',
   source: 'source',

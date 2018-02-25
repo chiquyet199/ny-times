@@ -1,0 +1,7 @@
+export { default as Post } from './Post/Post'
+export { default as Modal } from './Modal/Modal'
+export { default as Image } from './Image/Image'
+export { default as Paging } from './Paging/Paging'
+export { default as Loading } from './Loading/Loading'
+export { default as PostList } from './PostList/PostList'
+export { default as PostDetail } from './PostDetail/PostDetail'

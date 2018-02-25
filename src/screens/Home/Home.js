@@ -2,8 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getPosts } from 'actions/posts'
-import Loading from 'components/Loading'
-import PostList from 'components/PostList'
+import { PostList, Loading } from 'components'
 
 export class Home extends React.Component {
   componentDidMount() {

@@ -3,10 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { setActivePost, clearActivePost } from 'actions/posts'
-import Post from 'components/Post'
-import Modal from 'components/Modal'
-import Paging from 'components/Paging'
-import PostDetail from 'components/PostDetail'
+import { Post, Modal, Paging, PostDetail } from 'components/'
 
 export class PostList extends React.Component {
   constructor(props) {

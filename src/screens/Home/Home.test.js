@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 
 import 'configs/tests'
 
-import { Home } from '../index'
+import { Home } from './Home'
 
 describe('>>>S C R E E N --- Test Home', () => {
   it('+++ Render Loading if posts empty', () => {
