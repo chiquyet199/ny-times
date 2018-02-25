@@ -74,7 +74,7 @@
     },
     "moduleDirectories": ["node_modules", "./"],
     "moduleNameMapper": {
-      "^.+.(css|scss|sass)$": "<rootDir>/__tests__/cssStub.js"
+      "^.+.(css|scss|sass)$": "<rootDir>/src/configs/cssStubs.js"
     },
     "setupFiles": ["raf/polyfill"],
     "transform": {

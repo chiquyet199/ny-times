@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 import configureStore from 'redux-mock-store'
 
-import '__tests__/config'
+import 'configs/tests'
 
 import { Paging } from '../index'
 import Paginator from '../Paginator'

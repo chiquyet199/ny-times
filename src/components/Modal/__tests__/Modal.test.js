@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
 
-import '__tests__/config'
+import 'configs/tests'
 
 import Modal from '../index'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import '__tests__/config'
+import 'configs/tests'
 
 import Post from '../index'
 const props = {
